@@ -1,0 +1,22 @@
+ENTRY(_start)
+
+SECTIONS {
+    . = 1M /* Ядро загружается по адресу 1 МБ */
+
+    .text : {
+        *(.multiboot)
+        *(.text)
+    }
+
+    .rodata : {
+        *(.rodata)
+    }
+
+    .data : {
+        *(.data)
+    }
+    .bss : {
+        *(COMMON)
+        *(.bss)
+    }
+}
